@@ -60,9 +60,28 @@ Proporciona instrucciones claras sobre cómo instalar y configurar el proyecto. 
    python3 src/console/console.py
 
    ```
-4. Ejecutar el programa en interfaz :
+# instrucciones para ejecutar los casos de prueba
+
+Proporciona instrucciones claras sobre cómo instalar y configurar el proyecto. Por ejemplo:
+1. Clona el repositorio a tu máquina local:
    ```
-   sudo python3 src/console/interfaz.py
+   git clone https://github.com/jorgebls/compresor_de_comunicaciones
+   ```
+2. Navega al directorio del proyecto:
+   ```
+   cd compresor_de_comunicaciones/
+   ```
+3. Ejecutar casos de prueba:
+   ```
+   python3 test/testcaseregular.py
+   ```
+   ```
+   python3 test/testcasesextraordinary.py
+   ```
+   ```
+   python3 test/testcaseerror.py
+   ```
+   
 
 ## Ejecución
 Explica cómo utilizar tu proyecto. Por ejemplo:
