@@ -58,6 +58,10 @@ Proporciona instrucciones claras sobre cómo instalar y configurar el proyecto. 
 3. Ejecutar el programa en consola :
    ```
    python3 src/console/console.py
+   ```
+4. Ejecutar el programa en la interfaz:
+   ```
+   python3 src/console/interfaz.py
 
    ```
 # instrucciones para ejecutar los casos de prueba
