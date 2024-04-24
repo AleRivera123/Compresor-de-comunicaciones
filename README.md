@@ -77,13 +77,13 @@ Proporciona instrucciones claras sobre cómo instalar y configurar el proyecto. 
    ```
 3. Ejecutar casos de prueba:
    ```
-   python3 test/testcaseregular.py
+   python test/testcaseregular.py
    ```
    ```
-   python3 test/testcasesextraordinary.py
+   python test/testcasesextraordinary.py
    ```
    ```
-   python3 test/testcaseerror.py
+   python test/testcaseerror.py
    ```
    
 
