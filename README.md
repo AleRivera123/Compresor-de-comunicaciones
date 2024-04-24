@@ -41,7 +41,7 @@ python -m pip install docutils pygments pypiwin32 kivy_deps.sdl2 kivy_deps.glew 
 Una vez que hayas instalado todas las dependencias necesarias, puedes proceder a instalar Kivy. Kivy es un framework poderoso que permite el desarrollo de aplicaciones multitáctiles y multiplataforma. Para instalar Kivy, abre tu terminal de comandos como administrador y ejecuta el siguiente comando:
 
 ```bash
-python -m pip install kivy
+pip install kivy
 ```
 
 # instrucciones para ejecutar el programa 
@@ -57,11 +57,11 @@ Proporciona instrucciones claras sobre cómo instalar y configurar el proyecto. 
    ```
 3. Ejecutar el programa en consola :
    ```
-   python3 src/console/console.py
+   python src/console/console.py
    ```
 4. Ejecutar el programa en la interfaz:
    ```
-   python3 src/console/interfaz.py
+   python src/console/interfaz.py
 
    ```
 # instrucciones para ejecutar los casos de prueba
