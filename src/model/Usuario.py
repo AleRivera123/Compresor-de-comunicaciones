@@ -18,6 +18,7 @@ class UpdateNotFoundError(Exception):
 
 # Clase para manejar la entrada de usuario
 class UserInput:
+
     def __init__(self, nombre, cedula, telefono, correo, texto_original, tipo_evento):
         self.nombre = nombre
         self.cedula = cedula
@@ -25,8 +26,19 @@ class UserInput:
         self.correo = correo
         self.texto_original = texto_original
         self.tipo_evento = tipo_evento
-        self.fecha_hora = None  # La fecha y hora se establecen automáticamente en la base de datos
-    
+        self.fecha_hora = None
+
+    def is_equal(self, other):
+        """Compara esta instancia con otra para asegurarse de que son iguales."""
+        return (self.nombre == other.nombre and
+                self.cedula == other.cedula and
+                self.telefono == other.telefono and
+                self.correo == other.correo and
+                self.texto_original == other.texto_original and
+                self.tipo_evento == other.tipo_evento)
+
+    # Otras funciones...
+
     def validate(self):
         # Validar que todos los campos necesarios están presentes
         if not all([self.nombre, self.cedula, self.correo, self.telefono, self.texto_original, self.tipo_evento]):
