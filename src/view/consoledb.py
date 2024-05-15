@@ -1,11 +1,12 @@
 import sys
 sys.path.append("src")
 from controller.ControladorUsuarios import UserData
-import compressor.compressorlogic as compresorlogic  # Imports the compressor logic module
-from compressor.compressorlogic import *  # Imports all elements from the compressorlogic module
+import compressor.compressorlogic as compresorlogic  # Importa el módulo de lógica del compresor
+from compressor.compressorlogic import *  # Importa todos los elementos del módulo compressorlogic
 
 import pandas as pd
 
+# Presenta las funcionalidades disponibles en la aplicación.
 print("""Bienvenido al sistema de compresión de textos. A continuación se describen las funcionalidades disponibles:
       - Crear una tabla inicial para usuarios.
       - Insertar nuevos usuarios y sus textos.
@@ -14,10 +15,12 @@ print("""Bienvenido al sistema de compresión de textos. A continuación se desc
       - Hacer consultas sobre los usuarios.""")
 
 def create_tables():
+    # Crea la tabla de usuarios en la base de datos y notifica al usuario.
     UserData.create_table()
     print("Tabla de usuarios creada con éxito.")
 
 def insert_user():
+    # Instancia el compresor, recoge datos del usuario desde la consola, y procesa textos según se requiera comprimir o descomprimir.
     compresor = compresorlogic.CompresorRLE()
     print("Ingresa la siguiente información del usuario:")
     cedula = int(input("Cédula del usuario: "))
@@ -27,20 +30,19 @@ def insert_user():
     texto_original = input("Texto original: ")
     tipo_evento = input("(comprimir/descomprimir): ")
 
-    if tipo_evento=="comprimir":
+    if tipo_evento == "comprimir":
         texto_procesado = compresor.comprimir(texto_original)
-    elif tipo_evento=="descomprimir":
+    elif tipo_evento == "descomprimir":
         texto_procesado = compresor.descomprimir(texto_original)
     else:
-        print("opcion incorreta")
+        print("Opción incorrecta")
 
-
-    # Llama a la función con un solo diccionario como argumento
-    UserData.insert_user(cedula,nombre,telefono,correo,tipo_evento,texto_original,texto_procesado)
+    # Inserta el usuario en la base de datos.
+    UserData.insert_user(cedula, nombre, telefono, correo, tipo_evento, texto_original, texto_procesado)
     print("Usuario insertado correctamente.")
 
-
 def update_user():
+    # Permite al usuario actualizar información específica de un usuario existente.
     cedula = int(input("Cédula del usuario a actualizar: "))
     campo = input("Campo a actualizar (nombre, telefono, correo, texto_original): ")
     nuevo_valor = input("Nuevo valor: ")
@@ -48,11 +50,13 @@ def update_user():
     print("Usuario actualizado correctamente.")
 
 def delete_user():
+    # Elimina un usuario especificado por su cédula.
     cedula = int(input("Cédula del usuario a eliminar: "))
     UserData.delete_user(cedula)
     print("Usuario eliminado correctamente.")
 
 def query_user():
+    # Consulta y muestra información de un usuario por su cédula.
     cedula = int(input("Cédula del usuario a consultar: "))
     usuario = UserData.query_user(cedula)
     if usuario:
@@ -70,9 +74,10 @@ def query_user():
     else:
         print("No se encontró ningún usuario con esa cédula.")
 
-create_tables()
+create_tables()  # Crea las tablas necesarias al iniciar el programa.
 
 while True:
+    # Menú de opciones para que el usuario elija qué acción realizar.
     print("""¿Qué acción deseas realizar?:
       - insertar_usuario
       - actualizar_usuario
