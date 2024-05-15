@@ -44,7 +44,7 @@ def insert_user():
 def update_user():
     # Permite al usuario actualizar información específica de un usuario existente.
     cedula = int(input("Cédula del usuario a actualizar: "))
-    campo = input("Campo a actualizar (nombre, telefono, correo, texto_original): ")
+    campo = input("Campo a actualizar (nombre, telefono, correo): ")
     nuevo_valor = input("Nuevo valor: ")
     UserData.update_user(cedula, campo, nuevo_valor)
     print("Usuario actualizado correctamente.")
