@@ -65,7 +65,7 @@ Proporciona instrucciones claras sobre cómo instalar y configurar el proyecto. 
    ```
 4. Ejecutar el programa en la interfaz:
    ```
-   python src/console/interfaz.py
+   python src/Gui/interfaz.py
 
    ```
 5. Ejecutar la base de datos por consola:
