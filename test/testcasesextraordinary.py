@@ -2,15 +2,15 @@ import unittest
 import zlib
 
 import sys
-sys.path.append("compresor_de_comunicaciones/src")
-sys.path.append("./src")
+sys.path.append("compresor_de_comunicaciones/")
+sys.path.append("./")
 
-from compressor.compressorlogic import *
-import compressor.compressorlogic as lc
+from src.compressor.compressorlogic import *
+import src.compressor.compressorlogic as lc
 
-class TestCompresorZlibExtraordinarios(unittest.TestCase):
+class TestCompresorRLEExtraordinarios(unittest.TestCase):
     def setUp(self):
-        self.compresor = lc.CompresorZlib()
+        self.compresor = lc.CompresorRLE()
 
     # Casos extraordinarios para comprimir
     def test_comprimir_texto_largo(self):

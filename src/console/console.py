@@ -1,31 +1,35 @@
 import sys
-sys.path.append("src")  # Agrega el directorio 'src' al path de búsqueda de módulos de Python
+sys.path.append("src")  # Adds the 'src' directory to the Python module search path
 
-import compressor.compressorlogic as compresorlogic  # Importa el módulo de lógica del compresor
-from compressor.compressorlogic import *  # Importa todos los elementos del módulo compressorlogic
+import compressor.compressorlogic as compresorlogic  # Imports the compressor logic module
+from compressor.compressorlogic import *  # Imports all elements from the compressorlogic module
 
 class Aplicacion:
     def __init__(self):
-        self.compresor = compresorlogic.CompresorZlib()  # Instancia un objeto de la clase CompresorZlib
+        self.compresor = compresorlogic.CompresorRLE()  # Creates an instance of the CompresorRLE class
 
     def ejecutar(self):
+        running = True
         print("Bienvenido a la aplicación de compresión/descompresión de texto.")
-        texto_usuario = input("Por favor, ingrese el texto: ")  # Solicita al usuario que ingrese el texto
-        accion = input("¿Desea comprimir o descomprimir el texto? (comprimir/descomprimir): ")  # Pregunta si desea comprimir o descomprimir el texto
+        
+        while running:
+            texto_usuario = input("Por favor, ingrese el texto: ")  # Requests the user to enter the text
+            accion = input("¿Desea comprimir o descomprimir el texto? (comprimir/descomprimir): ")  # Asks whether to compress or decompress the text
 
-        if accion.lower() == "comprimir":  # Procesa la acción de compresión
-            resultado = self.compresor.comprimir(texto_usuario)  # Comprime el texto ingresado
-            print(f"Texto comprimido (en bytes): {resultado.hex()}")  # Muestra el texto comprimido en formato hexadecimal
-        elif accion.lower() == "descomprimir":  # Procesa la acción de descompresión
-            resultado = self.compresor.descomprimir(texto_usuario)  # Intenta descomprimir el texto ingresado
-            if resultado:
-                print(f"Texto descomprimido: {resultado}")  # Muestra el texto descomprimido si es exitoso
-            else:
-                print("No se pudo descomprimir el texto, asegúrese de que esté en el formato correcto.")  # Informa de un error si no se puede descomprimir
-        else:
-            print("Acción no reconocida. Por favor, ingrese 'comprimir' o 'descomprimir'.")  # Maneja entradas no reconocidas
+            if accion.lower() == "comprimir":  # Processes the compression action
+                resultado = self.compresor.comprimir(texto_usuario)  # Compresses the entered text
+
+                print(f"Texto comprimido (en bytes): {resultado}")  # Displays the compressed text in hexadecimal format
+            elif accion.lower() == "descomprimir":  # Processes the decompression action
+
+                resultado = self.compresor.descomprimir(texto_usuario)  # Decompress the string
+                print(f"Texto descomprimido: {resultado}")  # Displays the decompressed text
+    
+            continuar = input("¿Desea continuar udasn? (sí/no): ")
+            if continuar.lower() != 'si':
+                running = False
+
 
 if __name__ == "__main__":
-    app = Aplicacion()  # Crea una instancia de Aplicacion
-    app.ejecutar()  # Ejecuta el método ejecutar de la instancia
-
+    app = Aplicacion()  # Creates an instance of Aplicacion
+    app.ejecutar()  # Executes the ejecutar method of the instance

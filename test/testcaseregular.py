@@ -8,9 +8,9 @@ sys.path.append("./src")
 from compressor.compressorlogic import *
 import compressor.compressorlogic as lc
 
-class TestCompresorZlib(unittest.TestCase):
+class TestCompresorRLE(unittest.TestCase):
     def setUp(self):
-        self.compresor = lc.CompresorZlib()
+        self.compresor = lc.CompresorRLE()
 
     # Casos de prueba para comprimir
     def test_comprimir_simple(self):
