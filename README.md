@@ -47,7 +47,11 @@ pip install kivy
 ```bash
 pip install pandas 
 ```
+### paso 5: instalar psycopg2
 
+```bash
+pip install psycopg2
+```
 # instrucciones para ejecutar el programa 
 
 Proporciona instrucciones claras sobre cómo instalar y configurar el proyecto. Por ejemplo:
@@ -71,8 +75,35 @@ Proporciona instrucciones claras sobre cómo instalar y configurar el proyecto. 
 5. Ejecutar la base de datos por consola:
    ```
    python src/view/consoledb.py
-
    ```
+
+## Base de Datos del Sistema de Compresión de Textos
+
+### Descripción de la Base de Datos
+
+El sistema utiliza una base de datos **PostgreSQL** hospedada en **Neon** para gestionar eficientemente los datos de los usuarios y sus operaciones de compresión y descompresión de textos. La base de datos permite realizar inserciones, actualizaciones, eliminaciones y consultas de manera segura y eficaz.
+
+### Estructura y Variables Almacenadas
+
+La tabla `Usuarios` en la base de datos almacena los siguientes datos:
+
+- **Cédula (BIGINT)**: Identificador único para cada usuario.
+- **Nombre (VARCHAR)**: Nombre del usuario.
+- **Teléfono (BIGINT)**: Número de teléfono del usuario.
+- **CorreoElectronico (VARCHAR)**: Correo electrónico del usuario.
+- **TipoEvento (VARCHAR)**: Indica si la operación fue de compresión o descompresión.
+- **TextoOriginal (TEXT)**: Texto original proporcionado por el usuario.
+- **TextoProcesado (TEXT)**: Resultado del texto después de la compresión o descompresión.
+- **FechaHora (TIMESTAMP)**: Marca de tiempo del evento guardada automáticamente.
+
+### Funcionalidades Clave
+
+- **Creación Automática de Tabla**: Al iniciar el sistema, se verifica y crea la tabla de usuarios si no existe.
+- **Manejo de Excepciones**: Se gestionan las excepciones para prevenir errores comunes como duplicaciones de entradas o búsquedas de registros inexistentes, manteniendo la integridad de la base de datos.
+
+Esta base de datos PostgreSQL proporciona una plataforma robusta para el almacenamiento y gestión de datos dentro del sistema de compresión de textos, asegurando un funcionamiento eficiente y seguro del mismo.
+
+   
 # instrucciones para ejecutar los casos de prueba
 
 Proporciona instrucciones claras sobre cómo instalar y configurar el proyecto. Por ejemplo:
