@@ -2,9 +2,10 @@ import sys
 sys.path.append("src")
 import psycopg2
 import compressor.compressorlogic as compressor
-
+from model.Usuario import DuplicateEntryError
+from model.Usuario import EntryNotFoundError
 # Configuration from your security settings module
-import SecretConfig as st
+import controller.SecretConfig as st
 
 class UserData:
 
@@ -41,14 +42,19 @@ class UserData:
                 conn.commit()
 
     @staticmethod
-    def insert_user(cedula, nombre, telefono, correo, tipo_evento, texto_original,texto_procesado):
+    def insert_user(cedula, nombre, telefono, correo, tipo_evento, texto_original, texto_procesado):
         with UserData.get_connection() as conn:
             with conn.cursor() as cursor:
-                cursor.execute("""
-                    INSERT INTO Usuarios (Cedula, Nombre, Telefono, CorreoElectronico, tipoEvento, TextoOriginal, TextoProcesado)
-                    VALUES (%s, %s, %s, %s, %s, %s, %s) ON CONFLICT (Cedula) DO NOTHING;
-                """, (cedula, nombre, telefono, correo, tipo_evento, texto_original,texto_procesado))
-                conn.commit()
+                try:
+                    cursor.execute("""
+                        INSERT INTO Usuarios (Cedula, Nombre, Telefono, CorreoElectronico, tipoEvento, TextoOriginal, TextoProcesado)
+                        VALUES (%s, %s, %s, %s, %s, %s, %s);
+                    """, (cedula, nombre, telefono, correo, tipo_evento, texto_original, texto_procesado))
+                    conn.commit()
+                except psycopg2.IntegrityError:
+                    conn.rollback()  # Rollback the transaction on error
+                    raise DuplicateEntryError(f"Ya existe un usuario con la cédula {cedula}.")
+
 
     @staticmethod
     def delete_user(cedula):
@@ -60,10 +66,12 @@ class UserData:
 
     @staticmethod
     def update_user(cedula, key, value):
-        """ Actualiza la información del usuario """
         with UserData.get_connection() as conn:
             with conn.cursor() as cursor:
                 cursor.execute(f"UPDATE Usuarios SET {key} = %s WHERE Cedula = %s;", (value, cedula))
+                if cursor.rowcount == 0:
+                    conn.rollback()  # Rollback if no row was updated
+                    raise EntryNotFoundError(f"No se encontró un usuario con cédula {cedula} para actualizar.")
                 conn.commit()
 
     @staticmethod
@@ -72,7 +80,12 @@ class UserData:
         with UserData.get_connection() as conn:
             with conn.cursor() as cursor:
                 cursor.execute("SELECT * FROM Usuarios WHERE Cedula = %s;", (cedula,))
-                return cursor.fetchone()
+                result = cursor.fetchone()
+                if not result:
+                    raise EntryNotFoundError("Usuario no encontrado.")
+                return result
+
+
 
 # Clases auxiliares pueden ser definidas aquí si son necesarias para manejar la lógica de negocio específica
 
