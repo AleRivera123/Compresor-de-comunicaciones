@@ -68,6 +68,11 @@ Proporciona instrucciones claras sobre cómo instalar y configurar el proyecto. 
    python src/console/interfaz.py
 
    ```
+5. Ejecutar la base de datos por consola:
+   ```
+   python src/view/consoledb.py
+
+   ```
 # instrucciones para ejecutar los casos de prueba
 
 Proporciona instrucciones claras sobre cómo instalar y configurar el proyecto. Por ejemplo:
