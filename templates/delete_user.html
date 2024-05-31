@@ -4,27 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eliminar Usuario</title>
-    <link rel="stylesheet" href="../static/css/delete.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/delete.css') }}">
 </head>
 <body>
     <div id="contenedor">
         <div id="central">
             <h1 class="titulo">Eliminar Usuario</h1>
             <div id="delete">
-                <form action="/user_deleted" method="get">
+                <form action="{{ url_for('vista_usuarios.user_deleted') }}" method="get">
                     <label for="cedula">Ingrese la cédula del usuario a eliminar:</label>
                     <input type="text" id="cedula" name="cedula" placeholder="Cédula" required>
                     <button type="submit">Eliminar</button>
                 </form>
-                {% if user %}
-                    <p>El usuario con cédula <strong>{{ user.cedula }}</strong> ha sido eliminado correctamente.</p>
-                {% elif user is not none %}
+                {% if Usuario %}
+                    <p>El usuario con cédula <strong>{{ Usuario.cedula }}</strong> ha sido eliminado correctamente.</p>
+                {% else %}
                     <p>No se encontró ningún usuario con esa cédula.</p>
                 {% endif %}
-                <button onclick="window.location.href='index.html'">Volver</button>
+                <button onclick="window.location.href='{{ url_for('vista_usuarios.Home') }}'">Volver</button>
             </div>
         </div>
     </div>
 </body>
 </html>
-

@@ -4,14 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuario Buscado</title>
+    <link rel="stylesheet" href="../static/css/search_user.css">
 </head>
+
 <body>
     <div class="div">
-        <h1> La cédula del usuario buscado es: {{Usuario.cedula}} </h1>
-        <form action="/">
-            <button class ="button">Volver al Menú</button>
+        <form class="form-container" action="/">
+            <h1>La cédula del usuario buscado es: {{Usuario.cedula}}</h1>
+            <center>
+            <button class="button" id="backButton">Volver al Menú</button>
+            </center>
         </form>
     </div>
-    
+    <script>
+        // Obtener referencia al botón
+        var backButton = document.getElementById('backButton');
+
+        // Agregar un event listener para el evento 'click'
+        backButton.addEventListener('click', function() {
+            // Redirigir al usuario a la página principal de Flask
+            window.location.href = '/';
+        });
+    </script>
+
 </body>
 </html>

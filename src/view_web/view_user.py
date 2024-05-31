@@ -30,9 +30,11 @@ def delete_user():
 
 @Blueprint.route("/user_deleted")
 def user_deleted():
-   cedula= request.args["cedula"]
-   usuario = ControladorUsuarios.delete_user(cedula)
-   return render_template("user_deleted.html", Usuario = usuario)
+    cedula = request.args.get("cedula")
+    usuario = ControladorUsuarios.delete_user(cedula)
+
+    return render_template("user_deleted.html", Usuario=usuario)
+
 
 @Blueprint.route("/update_user")
 def update_user():
@@ -40,12 +42,12 @@ def update_user():
 
 @Blueprint.route("/updated_user")
 def updated_user():
-   nombre= request.args["nombre"]
-   cedula= request.args["cedula"]
-   campo = request.args["campo"]
-   nuevo_valor = request.args["nuevo_valor"]
-   usuario= ControladorUsuarios.update_user(cedula, campo, nuevo_valor)
-   return render_template("updated_user.html" , Usuario= usuario)
+    nombre = request.args.get("nombre")
+    cedula = request.args.get("cedula")
+    campo = request.args.get("campo")
+    nuevo_valor = request.args.get("nuevo_valor")
+    usuario = ControladorUsuarios.update_user(cedula, campo, nuevo_valor)
+    return render_template("updated_user.html", Usuario=usuario)
 
 @Blueprint.route("/crear-usuario")
 def create_user():
@@ -78,3 +80,7 @@ def crear_usuario():
 @Blueprint.route("/user_created")
 def user_created():
     return render_template("user_created.html")
+
+@Blueprint.route('/update_user')
+def update_user_page():
+    return render_template("update_user.html")

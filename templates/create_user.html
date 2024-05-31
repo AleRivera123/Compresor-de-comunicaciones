@@ -19,7 +19,7 @@
                     <div class="titulo">
                         Crear Usuario
                     </div>
-                    <form id="crear_usuario_form" action="/crear-usuario" method="get">
+                    <form id="crear_usuario_form" action="/crear-usuario" method="POST">
                         <input type="text" name="cedula" placeholder="Cédula" required>
                         <input type="text" name="nombre" placeholder="Nombre" required>
                         <input type="text" name="telefono" placeholder="Telefono" required>
@@ -29,11 +29,22 @@
                         <button type="submit" title="Crear Usuario" name="Crear Usuario">Registrar</button>
                     </form>
                     <div class="pie-form">
-                        <a href="index.html">Volver al menú</a>
-                        <a href="update_user.html">¿Quieres modificar un usuario?</a>
+                        <button class="button" id="backButton">Volver al Menú</button>
+                        <a href="/update_user">¿Quieres modificar un usuario?</a>
                     </div>
                 </div>
             </div>
         </div>
+      <script>
+        // Obtener referencia al botón
+        var backButton = document.getElementById('backButton');
+
+        // Agregar un event listener para el evento 'click'
+        backButton.addEventListener('click', function() {
+            // Redirigir al usuario a la página principal de Flask
+            window.location.href = '/';
+        });
+    </script>
+
     </body>
 </html>

@@ -1,0 +1,56 @@
+body {
+    font-family: 'Overpass', sans-serif;
+    font-weight: normal;
+    font-size: 100%;
+    color: #1b262c;
+    margin: 0;
+    background-color: #0f4c75;
+}
+
+#contenedor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+#central {
+    max-width: 320px;
+    width: 100%;
+}
+
+#login {
+    padding: 50px 30px;
+    background-color: #3282b8;
+    box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+    border-radius: 3px;
+}
+
+.titulo {
+    font-size: 24px;
+    color: #bbe1ef;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#login p {
+    font-size: 16px;
+    color: #1b262c;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.pie-form {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.pie-form a {
+    text-decoration: none;
+    color: #bbe1fa;
+}
+
+.pie-form a:hover {
+    color: #0f4c75;
+}

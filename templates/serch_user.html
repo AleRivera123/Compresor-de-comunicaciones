@@ -55,8 +55,18 @@
             {% else %}
                 <p>No se encontró ningún usuario con esa cédula.</p>
             {% endif %}
-            <button onclick="window.location.href='index.html'">Volver</button>
+            <button class="button" id="backButton">Volver al Menú</button>
         </div>
     </div>
+      <script>
+        // Obtener referencia al botón
+        var backButton = document.getElementById('backButton');
+
+        // Agregar un event listener para el evento 'click'
+        backButton.addEventListener('click', function() {
+            // Redirigir al usuario a la página principal de Flask
+            window.location.href = '/';
+        });
+    </script>
 </body>
 </html>
