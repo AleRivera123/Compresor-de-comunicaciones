@@ -162,7 +162,11 @@ Texto descomprimido: hola mundo
 
 ## Licencia MIT
 
-Copyright (c) 2024 NEHIR RODRIGUEZ, JORGE BEDOYA 
+Copyright (c) 2024  
+
+Autores: NEHIR RODRIGUEZ, JORGE BEDOYA
+
+Colaboradores: ANA SOFIA LONDOÑO, ALEJANDRO RIVERA
 
 Se concede permiso, de forma gratuita, a cualquier persona que obtenga una copia
 de este software y los archivos de documentación asociados (el "Software"), para tratar

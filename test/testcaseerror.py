@@ -5,9 +5,9 @@ import sys
 sys.path.append("compresor_de_comunicaciones/src")
 sys.path.append("./src")
 
-from compressor.compressorlogic import *
+from src.compressor.compressorlogic import *
 
-import compressor.compressorlogic as lc
+import src.compressor.compressorlogic as lc
 
 class TestCompresorZlibErrores(unittest.TestCase):
     def setUp(self):

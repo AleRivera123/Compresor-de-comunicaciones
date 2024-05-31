@@ -1,8 +1,8 @@
 import sys
 sys.path.append("src")
-from controller.ControladorUsuarios import UserData
-import compressor.compressorlogic as compresorlogic  # Importa el módulo de lógica del compresor
-from compressor.compressorlogic import *  # Importa todos los elementos del módulo compressorlogic
+from src.controller.ControladorUsuarios import UserData
+import src.compressor.compressorlogic as compresorlogic  # Importa el módulo de lógica del compresor
+from src.compressor.compressorlogic import *  # Importa todos los elementos del módulo compressorlogic
 
 import pandas as pd
 

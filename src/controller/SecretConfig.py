@@ -1,7 +1,6 @@
 # Do not expose your Neon credentials to the browser
-
-PGHOST='ep-quiet-bonus-a5bpo8xm.us-east-2.aws.neon.tech'
-PGDATABASE='compresordb'
+PGHOST='ep-tiny-bush-a5uraom2.us-east-2.aws.neon.tech'
+PGDATABASE='neondb'
 PGUSER='neondb_owner'
-PGPASSWORD='CidAgtrx2v4T'
+PGPASSWORD='WUJS48gekbRr'
 PGPORT=5432

@@ -8,8 +8,8 @@ from kivy.core.window import Window
 # Importa la clase CompresorRLE de tu módulo de compresión
 import sys
 sys.path.append("src")  # Añade el directorio 'src' a los directorios donde Python busca módulos
-import compressor.compressorlogic as compresorlogic  # Importa el módulo con la lógica de compresión
-from compressor.compressorlogic import *  # Importa todas las clases y funciones del módulo de lógica del compresor
+import src.compressor.compressorlogic as compresorlogic  # Importa el módulo con la lógica de compresión
+from src.compressor.compressorlogic import *  # Importa todas las clases y funciones del módulo de lógica del compresor
 
 class MiAplicacion(App):
     def build(self):

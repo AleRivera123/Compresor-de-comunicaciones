@@ -1,0 +1,42 @@
+<!doctype html>
+
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Inicio</title>
+
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Overpass&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../static/css/index.css">
+</head>
+<body>
+    <div id="contenedor">
+        <div id="central">
+            <div id="principal">
+                <div class="titulo">
+                    <h4>Bienvenido al sistema de compresión de textos</h4>
+                </div>
+                <p>A continuación se describen las funcionalidades disponibles:</p>
+                <ul>
+                    <li>Crear una tabla inicial para usuarios.</li>
+                    <li>Insertar nuevos usuarios y sus textos.</li>
+                    <li>Actualizar información de los usuarios.</li>
+                    <li>Eliminar usuarios.</li>
+                    <li>Hacer consultas sobre los usuarios.</li>
+                </ul>
+                <p>Tabla de usuarios creada con éxito.</p>
+                <p>¿Qué acción deseas realizar?</p>
+
+                <div class="button-container">
+                    <button class="button" onclick="location.href='/crear-usuario'">Crear Usuario</button>
+                    <button class="button" onclick="location.href='/update_user'">Actualizar Usuario</button>
+                    <button class="button" onclick="location.href='/delete_user'">Eliminar Usuario</button>
+                    <button class="button" onclick="location.href='/serch_user'">Consultar Usuario</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

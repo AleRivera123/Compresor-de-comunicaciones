@@ -1,8 +1,8 @@
 import sys
 sys.path.append("src")  # Adds the 'src' directory to the Python module search path
 
-import compressor.compressorlogic as compresorlogic  # Imports the compressor logic module
-from compressor.compressorlogic import *  # Imports all elements from the compressorlogic module
+import src.compressor.compressorlogic as compresorlogic  # Imports the compressor logic module
+from src.compressor.compressorlogic import *  # Imports all elements from the compressorlogic module
 
 class Aplicacion:
     def __init__(self):

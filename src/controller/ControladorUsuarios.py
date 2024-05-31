@@ -1,8 +1,8 @@
 import psycopg2
 import sys
 sys.path.append("src")
-from model.Usuario import UserInput, UserOutput, DuplicateEntryError, EntryNotFoundError, DataValidationError
-import controller.SecretConfig as st
+from src.model.Usuario import UserInput, UserOutput, DuplicateEntryError, EntryNotFoundError, DataValidationError
+import src.controller.SecretConfig as st
 
 class UserData:
     """ Clase para operaciones de base de datos relacionadas con los usuarios. """
@@ -28,7 +28,7 @@ class UserData:
                         FechaHora TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                     );
                 """)
-                conn.commit()
+                cursor.connection.commit()
 
     @staticmethod
     def drop_table():
@@ -88,9 +88,8 @@ class UserData:
                 UserOutput.validate_user_found(result, "consulta")
                 return result
 
-    @staticmethod
-    def user_exists(cedula):
+    def drop_table():
         with UserData.get_connection() as conn:
             with conn.cursor() as cursor:
-                cursor.execute("SELECT EXISTS(SELECT 1 FROM Usuarios WHERE Cedula = %s)", (cedula,))
-                return cursor.fetchone()[0]
+                cursor.execute("DROP TABLE IF EXISTS Usuarios;")
+                conn.commit()

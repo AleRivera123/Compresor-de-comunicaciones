@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Usuario</title>
+    <link rel="stylesheet" href="../static/css/search.css">
+</head>
+<body>
+    <div class="container">
+        <div id="central">
+            <h1 class="titulo">Información del Usuario</h1>
+            <form action="/searched_user" method="get">
+                <label for="cedula">Ingrese la cédula del usuario a buscar:</label>
+                <input type="text" id="cedula" name="cedula" placeholder="Cédula" required>
+                
+            
+            {% if user %}
+                <table class="user-table">
+                    <tr>
+                        <th>Cédula</th>
+                        <td>{{ user['cedula'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <td>{{ user['nombre'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Teléfono</th>
+                        <td>{{ user['telefono'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Correo Electrónico</th>
+                        <td>{{ user['correo_electronico'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Tipo de Evento</th>
+                        <td>{{ user['tipo_evento'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Texto Original</th>
+                        <td>{{ user['texto_original'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Texto Procesado</th>
+                        <td>{{ user['texto_procesado'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Fecha y Hora</th>
+                        <td>{{ user['fecha_hora'] }}</td>
+                    </tr>
+                </table>
+                <button type="submit">Buscar</button>
+            </form>
+            {% else %}
+                <p>No se encontró ningún usuario con esa cédula.</p>
+            {% endif %}
+            <button onclick="window.location.href='index.html'">Volver</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Actualizar Usuario</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Overpass&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../static/css/update.css">
+</head>
+<body>
+    <div id="contenedor">
+        <div id="central">
+            <div id="update">
+                <div class="titulo">
+                    Actualizar Usuario
+                </div>
+
+                <!-- Formulario para ingresar la cédula -->
+                <form id="search_form" action="/updated-user" method="get">
+                    <input type="text" name="cedula" placeholder="Cédula del usuario" required>
+                    <button type="submit" title="Buscar Usuario">Buscar</button>
+                </form>
+
+                <!-- Si se ha encontrado un usuario, mostrar el siguiente formulario -->
+                {% if Usuario %}
+                <div class="info">
+                    <p>Cédula del usuario a actualizar: {{ Usuario.cedula }}</p>
+                </div>
+                <form id="update_form" action="/updated_user" method="post">
+                    <input type="hidden" name="cedula" value="{{ Usuario.cedula }}">
+
+                    <select name="campo" required>
+                        <option value="" disabled selected>Seleccione el campo a actualizar</option>
+                        <option value="telefono">Teléfono</option>
+                        <option value="nombre">Nombre</option>
+                        <option value="correo">Correo</option>
+                    </select>
+
+                    <input type="text" name="nuevo_valor" placeholder="Nuevo valor" required>
+
+                    <button type="submit" title="Actualizar Usuario">Actualizar</button>
+                </form>
+                {% endif %}
+
+                <div class="pie-form">
+                    <a href="index.html">Volver al menú</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

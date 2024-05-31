@@ -1,0 +1,39 @@
+<!doctype html>
+
+<html lang="es">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Crear Usuario</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Overpass&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../static/css/create.css">
+    </head>
+
+    <body>
+        <div id="contenedor">
+            <div id="central">
+                <div id="login">
+                    <div class="titulo">
+                        Crear Usuario
+                    </div>
+                    <form id="crear_usuario_form" action="/crear-usuario" method="get">
+                        <input type="text" name="cedula" placeholder="Cédula" required>
+                        <input type="text" name="nombre" placeholder="Nombre" required>
+                        <input type="text" name="telefono" placeholder="Telefono" required>
+                        <input type="text" name="correo" placeholder="Correo" required>
+                        <input type="text" name="texto_original" placeholder="Ingrese El Texto" required>
+                        <input type="text" name="tipo_evento" placeholder="Comprimir/Descomprimir" required>
+                        <button type="submit" title="Crear Usuario" name="Crear Usuario">Registrar</button>
+                    </form>
+                    <div class="pie-form">
+                        <a href="index.html">Volver al menú</a>
+                        <a href="update_user.html">¿Quieres modificar un usuario?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

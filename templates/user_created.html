@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Usuario Creado</title>
+        <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Overpass&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/create.css') }}">
+    </head>
+    <body>
+        <div id="contenedor">
+            <div id="central">
+                <div id="login">
+                    <div class="titulo">
+                        Usuario Creado Exitosamente
+                    </div>
+                    <p>El usuario {{ usuario.nombre }} ha sido creado exitosamente.</p>
+                    <div class="pie-form">
+                        <a href="{{ url_for('vista_usuarios.Home') }}">Volver al menú</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
