@@ -52,31 +52,46 @@ pip install pandas
 ```bash
 pip install psycopg2
 ```
+
+## paso 6: instalar el framework de flask:
+```bash
+pip install flask
+```
+
 # instrucciones para ejecutar el programa 
 
 Proporciona instrucciones claras sobre cómo instalar y configurar el proyecto. Por ejemplo:
 1. Clona el repositorio a tu máquina local:
    ```
-   git clone https://github.com/jorgebls/compresor_de_comunicaciones
+   git clone https://github.com/AleRivera123/Compresor-de-comunicaciones.git
    ```
-2. Navega al directorio del proyecto:
+2. Ingrese sus datos de la base de datos en SecretConfig.py
+   
+3. Navega al directorio del proyecto:
    ```
    cd compresor_de_comunicaciones/
    ```
-3. Ejecutar el programa en consola :
+4. Ejecutar el programa en consola :
    ```
    python src/console/console.py
    ```
-4. Ejecutar el programa en la interfaz:
+5. Ejecutar el programa en la interfaz:
    ```
    python src/Gui/interfaz.py
 
    ```
-5. Ejecutar la base de datos por consola:
+6. Ejecutar la base de datos por consola:
    ```
    python src/view/consoledb.py
    ```
-
+7. Puede ejecutar la aplicación web directamente, pero tendría que reiniciar cada vez que haga cambios, para esto, ejecute el siguiente comando desde la carpeta raíz:
+    ```
+    python app.py
+    ```
+Si ejecuta flask directamente en modo debug, el detectará cada vez que haga cambios en el código y recargará automáticamente. Para ejecutar Flask en modo Debug:
+    ```
+    python -m flask run --debug
+    ```
 ## Base de Datos del Sistema de Compresión de Textos
 
 ### Descripción de la Base de Datos
@@ -109,7 +124,7 @@ Esta base de datos PostgreSQL proporciona una plataforma robusta para el almacen
 Proporciona instrucciones claras sobre cómo instalar y configurar el proyecto. Por ejemplo:
 1. Clona el repositorio a tu máquina local:
    ```
-   git clone https://github.com/jorgebls/compresor_de_comunicaciones
+   https://github.com/AleRivera123/Compresor-de-comunicaciones.git
    ```
 2. Navega al directorio del proyecto:
    ```
@@ -160,6 +175,36 @@ Texto descomprimido: hola mundo
 
 ```
 
+## Estructura del proyecto
+
+      Compresor-de-comunicaciones/
+      |-- app.py
+      |-- src/
+      |   |-- compressor/
+      |   |   |-- compressorlogic.py
+      |   |-- controller/
+      |   |   |-- ControladorUsuarios.py
+      |   |   |-- pruebatimepo.py
+      |   |   |-- Secretconfug.py
+      |   |-- console/
+      |   |   |-- console.py
+      |   |-- Gui/
+      |   |   |-- interfaz.py
+      |   |-- model/
+      |   |   |-- __init__.py
+      |   |   |-- Usuario.py
+      |   |-- view/
+      |   |   |-- consoledb.py
+      |   |-- view_web/
+      |   |   |-- view_user.py
+      |   |-- test/
+      |       |-- testcaseerror.py
+      |       |-- testcaseregular.py
+      |       |-- testcaseextraordinary.py
+      |       |-- test.db
+      |-- static/
+
+   
 ## Licencia MIT
 
 Copyright (c) 2024  
