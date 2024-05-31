@@ -29,13 +29,23 @@ class UserInput:
         self.tipo_evento = tipo_evento
 
     def validate(self):
-        if not all([self.nombre, self.cedula, self.correo, self.telefono, self.texto_original, self.tipo_evento]):
-            raise DataValidationError("Todos los campos son requeridos.")
-        
-        if self.tipo_evento not in ['comprimir', 'descomprimir']:
-            raise EventTypeError("Tipo de evento inválido. Debe ser 'comprimir' o 'descomprimir'.")
-
-        self.validate_email(self.correo)
+        # Verifica que todos los campos requeridos estén presentes
+        if not self.nombre or not self.cedula or not self.telefono or not self.correo or not self.texto_original or not self.tipo_evento:
+            print("Falta un campo requerido")
+            return False
+        # Verifica que la cédula y el teléfono sean números
+        if not self.cedula.isdigit() or not self.telefono.isdigit():
+            print("Cédula o teléfono no son números")
+            return False
+        # Verifica que el correo tenga un formato válido
+        if "@" not in self.correo:
+            print("Correo no tiene formato válido")
+            return False
+        # Verifica que tipo_evento sea "Comprimir" o "Descomprimir"
+        if self.tipo_evento not in ["Comprimir", "Descomprimir"]:
+            print("Tipo de evento no es válido")
+            return False
+        return True
 
     @staticmethod
     def validate_email(email):

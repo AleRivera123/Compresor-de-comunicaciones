@@ -15,11 +15,16 @@
                     <label for="cedula">Ingrese la cédula del usuario a eliminar:</label>
                     <input type="text" id="cedula" name="cedula" placeholder="Cédula" required>
                     <button type="submit">Eliminar</button>
-                </form>
-                {% if Usuario %}
-                    <p>El usuario con cédula <strong>{{ Usuario.cedula }}</strong> ha sido eliminado correctamente.</p>
+            </form>
+
+                {% if error %}
+                    <p>{{ error }}</p>
                 {% else %}
-                    <p>No se encontró ningún usuario con esa cédula.</p>
+                    {% if Usuario %}
+                        <p>El usuario con cédula <strong>{{ Usuario.cedula }}</strong> ha sido eliminado correctamente.</p>
+                    {% else %}
+                        <p>No se encontró ningún usuario con esa cédula.</p>
+                    {% endif %}
                 {% endif %}
                 <button onclick="window.location.href='{{ url_for('vista_usuarios.Home') }}'">Volver</button>
             </div>

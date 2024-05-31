@@ -7,10 +7,12 @@ sys.path.append("src")
 
 from src.view_web import view_user
 
+
 # Flask constructor: crea una variable que nos servirá para comunicarle a Flask
 # la configuración que queremos para nuestra aplicación
 app = Flask(__name__)
 app.register_blueprint(view_user.Blueprint)
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 # Esta linea permite que nuestra aplicación se ejecute individualmente
 if __name__=='__main__':

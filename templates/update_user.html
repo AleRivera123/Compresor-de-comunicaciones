@@ -43,9 +43,14 @@
 
                     <button type="submit" title="Actualizar Usuario">Actualizar</button>
                 </form>
+                {% else %}
+                <!-- Si no se encontró ningún usuario, mostrar un mensaje de error -->
+                <div class="info">
+                    <p>No se encontró ningún usuario con la cédula proporcionada.</p>
+                </div>
                 {% endif %}
 
-                 <div class="pie-form">
+                <div class="pie-form">
                     <a href="{{ url_for('vista_usuarios.Home') }}">Volver al menú</a>
                 </div>
             </div>
@@ -54,4 +59,3 @@
 
 </body>
 </html>
-

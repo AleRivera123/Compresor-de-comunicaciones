@@ -1,15 +1,26 @@
 import psycopg2
 import sys
+
 sys.path.append("src")
 from src.model.Usuario import UserInput, UserOutput, DuplicateEntryError, EntryNotFoundError, DataValidationError
 import src.controller.SecretConfig as st
+
 
 class UserData:
     """ Clase para operaciones de base de datos relacionadas con los usuarios. """
 
     @staticmethod
     def get_connection():
-        return psycopg2.connect(database=st.PGDATABASE, user=st.PGUSER, password=st.PGPASSWORD, host=st.PGHOST, port=st.PGPORT)
+        return psycopg2.connect(database=st.PGDATABASE, user=st.PGUSER, password=st.PGPASSWORD, host=st.PGHOST,
+                                port=st.PGPORT)
+
+    @staticmethod
+    def user_exists(cedula):
+        """ Verifica si un usuario con la cédula dada ya existe en la base de datos. """
+        with UserData.get_connection() as conn:
+            with conn.cursor() as cursor:
+                cursor.execute("SELECT 1 FROM Usuarios WHERE Cedula = %s", (cedula,))
+                return cursor.fetchone() is not None
 
     @staticmethod
     def create_table():
@@ -36,7 +47,6 @@ class UserData:
             with conn.cursor() as cursor:
                 cursor.execute("DROP TABLE IF EXISTS Usuarios;")
                 conn.commit()
-                
 
     @staticmethod
     def insert_user(cedula, nombre, telefono, correo, tipo_evento, texto_original, texto_procesado):
@@ -51,6 +61,8 @@ class UserData:
                     VALUES (%s, %s, %s, %s, %s, %s, %s);
                 """, (cedula, nombre, telefono, correo, tipo_evento, texto_original, texto_procesado))
                 conn.commit()
+
+
 
     @staticmethod
     def delete_user(cedula):
